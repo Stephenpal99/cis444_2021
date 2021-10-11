@@ -1,0 +1,70 @@
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1{
+  color: black;
+}
+
+h1: hover{
+  color: red;
+}
+
+p {
+  font-family: helvetica;
+  font-size: 20px;
+}
+
+div{
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+}
+
+#book{
+  font-size: 20px;
+}
+
+#dance{
+  font-size: 30px;
+  color: red;
+  background-color: black;
+  padding: 20px;
+}
+#hotel_img{
+  width:  100%;
+  height: 100%;
+}
+footer{
+  background-color: black;
+  color: white;
+}
+#fifty{
+  position: absolute;
+  right: 60%;
+  width: 40%;
+  height: 20%;
+
+}
+
+#gif{
+  background-color: #73b0ff;
+  width: 120px;
+  padding: 20px;
+  border: solid;
+  border-width: 2px;
+  border-radius: 100px;
+}
+
+#gif:hover{
+  background-color: lightblue;
+  width: 120px;
+  padding: 20px;
+  border: solid;
+  border-width: 2px;
+  border-radius: 100px;
+}
