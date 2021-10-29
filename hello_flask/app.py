@@ -24,6 +24,11 @@ JWT_SECRET = None
 
 global_db_con = get_db()
 
+def create_token(user):
+    payload = list(user)
+    token = jwt.encode({'username': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+    return token
+
 
 with open("secret", "r") as f:
     JWT_SECRET = f.read()
@@ -128,7 +133,7 @@ def getUser():
 			hash = same[1].encode('utf-8')
 			checkr = bcrypt.checkpw(bytes(password, "utf-8"),hash)
 			if checkr == True:
-				token = JWT_Token(username)
+				token = create_token(username)
 				session['token'] = token
 				return redirect("/getBooks")
 			else:
