@@ -129,7 +129,7 @@ def getUser():
 			checkr = bcrypt.checkpw(bytes(password, "utf-8"),hash)
 			if checkr == True:
 				token = JWT_Token(username)
-				session['token'] = JWT_Token
+				session['token'] = token
 				return redirect("/getBooks")
 			else:
 				return "User not valid"
