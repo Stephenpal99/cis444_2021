@@ -95,7 +95,8 @@ def hellodb():
     cur = global_db_con.cursor()
     if(cur.execute("SELECT true")=="true")
     	return json_response(status="good")
-    else return json_response(status="bad")
+    else 
+    	return json_response(status="bad")
 
 
 app.run(host='0.0.0.0', port=80)
