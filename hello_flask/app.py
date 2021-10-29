@@ -100,6 +100,21 @@ def hellodb():
         print(r)
     return json_response(status="good")
 
+@app.route('/addUser',methods = ["GET","POST"])
+def addUser():
+	if request.method == "POST"
+		cur =global_db_con.cursor()
+		user = request.form.get("username")
+		password = request.form.get("password")
+		enc_password = bcrypt.hashpw(bytes(password,"utf-8"),brypt.gensalt())
+		userInsert = """INSERT INTO users(user,password) values(%s, %s);"""
+		cur.execute(userInsert,(user,password))
+		global_db_con.commit()
+		print("Your user account has successfully been created. Please login now.")
+		return "Welcome" + user
+	return "There was an error on our part. Please try again!"
 
 app.run(host='0.0.0.0', port=80)
+
+
 
