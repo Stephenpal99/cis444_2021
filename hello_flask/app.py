@@ -95,8 +95,9 @@ def hellodb():
     cur = global_db_con.cursor()
     cur.execute("SELECT * FROM books;")
     global_db_con.commit()
-    print(cur.execute("SELECT * FROM books;"))
-    return json_response(status="good")
+    for r in cur.fetchall():
+        print(r)
+    return json_response(cur.fetchall())
 
 
 app.run(host='0.0.0.0', port=80)
