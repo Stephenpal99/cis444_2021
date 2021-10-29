@@ -106,7 +106,7 @@ def addUser():
 		cur =global_db_con.cursor()
 		user = request.form.get("username")
 		password = request.form.get("password")
-		enc_password = bcrypt.hashpw(bytes(password,"utf-8"),brypt.gensalt())
+		enc_password = bcrypt.hashpw(bytes(password,"utf-8"),bcrypt.gensalt())
 		userInsert = """INSERT INTO users(user,password) values(%s, %s);"""
 		cur.execute(userInsert,(user,password))
 		global_db_con.commit()
