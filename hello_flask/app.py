@@ -102,7 +102,7 @@ def hellodb():
 
 @app.route('/addUser',methods = ["GET","POST"])
 def addUser():
-	if request.method == "POST"
+	if request.method == "POST":
 		cur =global_db_con.cursor()
 		user = request.form.get("username")
 		password = request.form.get("password")
