@@ -93,8 +93,9 @@ def exposejwt():
 @app.route('/hellodb') #endpoint
 def hellodb():
     cur = global_db_con.cursor()
-    cur.execute("insert into music values( 'dsjfkjdkf', 1);")
+    cur.execute("SELECT * FROM books;")
     global_db_con.commit()
+    #print(cur.execute("SELECT * FROM books;"))
     return json_response(status="good")
 
 
