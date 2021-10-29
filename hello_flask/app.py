@@ -125,7 +125,7 @@ def getUser():
 		if same == None:
 			"User not found! Please create an account."
 		else:
-			hash = same.[1].encode('utf-8')
+			hash = same[1].encode('utf-8')
 			checkr = bcrypt.checkpw(bytes(password, "utf-8"),hash)
 			if checkr == True:
 				token = JWT_Token(username)
