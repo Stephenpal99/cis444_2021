@@ -11,7 +11,7 @@ def get_db_instance():
     return db, cur 
 
 
-''''
+"""
 if __name__ == "__main__":
     db, cur = get_db_instance()
 
@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     cur.execute("create table music ( song_name varchar(255), rating int);")
     db.commit()
-''''
+"""
 
 
 
