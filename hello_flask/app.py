@@ -93,10 +93,11 @@ def exposejwt():
 @app.route('/hellodb') #endpoint
 def hellodb():
     cur = global_db_con.cursor()
-    if cur.execute("SELECT true")
-    	return json_response(status="good")
-    else 
-    	return json_response(status="bad")
+    b = cur.execute("SELECT * FROM books")
+    print("Hello")
+    print(b)
+    global_db_con.commit()
+    return json_response(status="good")
 
 
 app.run(host='0.0.0.0', port=80)
