@@ -93,7 +93,7 @@ def exposejwt():
 @app.route('/hellodb') #endpoint
 def hellodb():
     cur = global_db_con.cursor()
-    if cur.execute("SELECT true")=="true"
+    if cur.execute("SELECT true")
     	return json_response(status="good")
     else 
     	return json_response(status="bad")
