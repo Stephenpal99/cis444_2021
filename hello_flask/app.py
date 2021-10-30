@@ -119,25 +119,26 @@ def addUser():
 		return "Welcome" + user
 	return "There was an error on our part. Please try again!"
 
-@app.route('/getUser',methods = ["GET","POST"])
-def getUser():
-	if request.method == "POST":
-		cur = global_db_con.cursor()
-		user = request.form.get("username")
-		password = request.form.get("password")
-		cur.execute("SELECT * FROM users WHERE username = username;")
-		same = cur.fetchone()
-		if same == None:
-			"User not found! Please create an account."
-		else:
-			hash = same[1].encode('utf-8')
-			checkr = bcrypt.checkpw(bytes(password, "utf-8"),hash)
-			if checkr == True:
-				token = create_token(username)
-				session['token'] = token
-				return redirect("/getBooks")
-			else:
-				return "User not valid"
+@app.route('/getUser', methods=['POST'])
+def login():
+    user = request.form['username']
+    password = request.form['password']
+    cur = global_db_con.cursor()
+    cur.execute(f"SELECT password FROM users WHERE username = '{user}';")
+    checkr = cur.fetchone()[0]
+    if checkr == None:
+        print("The username was not found")
+        return "User not found"
+    else:
+        checkr = bytes(checkr, 'utf-8')
+        passCheck = bcrypt.checkpw(bytes(password, 'utf-8'), checkr)
+        if(passCheck):
+            token = JWT_Token(user)
+            return jsonify(token)
+        else:
+            print("Invalid password")
+            return "Invalid password"
+
 		
 
 app.run(host='0.0.0.0', port=80)
