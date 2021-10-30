@@ -124,7 +124,7 @@ def login():
     user = request.form['username']
     password = request.form['password']
     cur = global_db_con.cursor()
-    cur.execute(f"SELECT password FROM users WHERE username = '{user}';")
+    cur.execute(f"SELECT pass FROM users WHERE username = '{user}';")
     checkr = cur.fetchone()[0]
     if checkr == None:
         print("The username was not found")
