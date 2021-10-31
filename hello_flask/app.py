@@ -102,7 +102,8 @@ app.config['SECRET_KEY'] = 'supersecretkey'
 def create_token(user):
     payload = list(user)
     token = jwt.encode({'username': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
-    return token and redirect('/static/myprofile.html')
+    redirect('/static/myprofile.html')
+    return token 
 
 @app.route('/addUser',methods = ["GET","POST"])
 def addUser():
