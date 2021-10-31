@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request
 from flask_json import FlaskJSON, JsonError, json_response, as_json
-import jwt
+import PyJWT
 
 import datetime
 import bcrypt
@@ -25,9 +25,7 @@ JWT_SECRET = None
 global_db_con = get_db()
 
 def create_token(user):
-    token = jwt.encode({'username': user,
-        'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=15)},
-        JWT_SECRET, algorithm="HS256")
+    token = jwt.encode({'username': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=15)}, JWT_SECRET, algorithm="HS256")
     return token
 
     with open("secret", "r") as f:
