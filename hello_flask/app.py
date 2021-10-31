@@ -136,7 +136,8 @@ def login():
 		
 @app.route('/getMyBooks', methods = ["GET", "POST"])
 def myBooks():
-    cur = global_db_con.cursor()
+    cur = global_db_con.cursor() 
+    global token
     token = session['token']
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
     username = getUser['username']
