@@ -130,15 +130,8 @@ def login():
         print("The username was not found")
         return "User not found"
     else:
-        checkr = bytes(checkr, 'utf-8')
-        passCheck = bcrypt.checkpw(bytes(password, 'utf-8'), checkr)
-        passCheck = passCheck.decode('utf8')
-        if(passCheck):
-            token = JWT_Token(user)
-            return jsonify(token)
-        else:
-            print("Invalid password")
-            return "Invalid password"
+        token = JWT_Token(user)
+        return jsonify(token)
 
 		
 
