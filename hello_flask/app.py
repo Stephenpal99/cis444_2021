@@ -130,7 +130,7 @@ def login():
         print("The username was not found")
         return "User not found"
     else:
-        token = JWT_Token(user)
+        token = create_token(user)
         return jsonify(token)
 
 		
