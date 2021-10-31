@@ -150,7 +150,7 @@ def myBooks():
     else:
         books = []
         for row in rows:
-            lst.append(row[1])
+            books.append(row[1])
         return jsonify(str(books))
       
 app.run(host='0.0.0.0', port=80)
