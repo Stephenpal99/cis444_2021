@@ -129,8 +129,7 @@ def login():
         print("The username was not found")
         return "User not found"
     else:
-	 
-        token = create_token(user)
+	token = create_token(user)
 	return redirect('/static/myprofile.html')
 
 		
