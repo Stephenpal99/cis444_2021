@@ -138,9 +138,10 @@ def login():
 def myBooks():
     cur = global_db_con.cursor() 
     global token
-    token = session['token']
-    getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-    username = getUser['username']
+    #token = session['token']
+    #getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+    #username = getUser['username']
+    username = "stevep"
     sqlExecute = "SELECT * FROM owners WHERE username = username"
     cur.execute(sqlExecute)
     rows = cur.fetchall()
