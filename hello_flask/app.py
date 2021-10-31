@@ -134,7 +134,23 @@ def login():
         return redirect('/static/myprofile.html')
 
 		
-
+@app.route('/getMyBooks', methods = ["GET", "POST"])
+def myBooks():
+    cur = global_db_con.cursor()
+    token = session['token']
+    getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+    username = getUser['username']
+    sqlExecute = "SELECT * FROM owners WHERE username = username"
+    cur.execute(sqlExecute)
+    rows = cur.fetchall()
+    if rows == None:
+        return "You don't own any books"
+    else:
+        books = []
+        for row in rows:
+            lst.append(row[1])
+        return jsonify(str(books))
+      
 app.run(host='0.0.0.0', port=80)
 
 
