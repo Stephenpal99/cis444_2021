@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request, jsonify
+from flask import Flask,render_template,request, jsonify, redirect
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 import jwt
 
