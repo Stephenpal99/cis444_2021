@@ -23,7 +23,7 @@ CUR_ENV = "PRD"
 
 global_db_con = get_db()
 
-
+token = None
 
 @app.route('/') #endpoint
 def index():
@@ -129,7 +129,7 @@ def login():
         print("The username was not found")
         return "User not found"
     else:
-        token = create_token(user)
+        global token = create_token(user)
         return redirect('/static/myprofile.html')
 
 		
