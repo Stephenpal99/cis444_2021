@@ -18,7 +18,7 @@ IMGS_URL = {
             "INT" : "https://cis-444-fall-2021.s3.us-west-2.amazonaws.com/images",
             "PRD" : "http://d2cbuxq67vowa3.cloudfront.net/images"
             }
-
+JWT_SECRET = "secret"
 CUR_ENV = "PRD"
 
 global_db_con = get_db()
