@@ -31,7 +31,7 @@ def create_token(user):
     return token
 
     with open("secret", "r") as f:
-    JWT_SECRET = f.read()
+    	JWT_SECRET = f.read()
 
 @app.route('/') #endpoint
 def index():
