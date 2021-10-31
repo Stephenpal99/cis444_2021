@@ -18,17 +18,12 @@ IMGS_URL = {
             "INT" : "https://cis-444-fall-2021.s3.us-west-2.amazonaws.com/images",
             "PRD" : "http://d2cbuxq67vowa3.cloudfront.net/images"
             }
-JWT_SECRET = "secret"
+JWT_SECRET = None
 CUR_ENV = "PRD"
 
 global_db_con = get_db()
 
-def create_token(user):
-    token = jwt.encode({'username': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=15)}, JWT_SECRET, algorithm="HS256")
-    return token
 
-    with open("secret", "r") as f:
-    	JWT_SECRET = f.read()
 
 @app.route('/') #endpoint
 def index():
@@ -101,6 +96,13 @@ def hellodb():
     for r in cur.fetchall():
         print(r)
     return json_response(status="good")
+
+app.config['SECRET_KEY'] = 'supersecretkey'
+
+def create_token(user):
+    payload = list(user)
+    token = jwt.encode({'username': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+    return token
 
 @app.route('/addUser',methods = ["GET","POST"])
 def addUser():
