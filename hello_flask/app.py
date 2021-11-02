@@ -131,14 +131,12 @@ def login():
     else:
         global token
         token = create_token(user)
-        return token
+        return redirect('/static/myprofile.html')
 
 		
 @app.route('/getMyBooks', methods = ["GET", "POST"])
-def myBooks():
+def myBooks(token):
     cur = global_db_con.cursor() 
-    global token
-    token = session['token']
     getUser = jwt.decode(token, app.config['SECRET_KEY'])
     username = getUser['username']
     #username = "stevep"
