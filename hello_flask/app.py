@@ -27,7 +27,7 @@ def exposejwt(token):
     return json_response(output=jwt.decode(token, JWT_SECRET, algorithms=["HS256"]))
 
   
-@app.route('/login', methods=['POST'])
+@app.route('/getUser', methods=['POST'])
 def login():
     user = request.form['username']
     password = request.form['password']
