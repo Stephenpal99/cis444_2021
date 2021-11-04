@@ -40,8 +40,10 @@ def login():
     else:
         token = create_token(user)
         print(token)
-        reveal = exposejwt(token)
-        print(reveal)
-        return "This is token" + token + ". This is exposed token " + reveal #redirect('/static/myprofile.html')
+        #reveal = exposejwt(token)
+        #print(reveal)
+        return "This is token" + token #redirect('/static/myprofile.html')
       
 app.run(host='0.0.0.0', port=80)
+
+
