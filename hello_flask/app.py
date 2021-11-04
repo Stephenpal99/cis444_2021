@@ -24,7 +24,8 @@ def create_token(user):
 
 def exposejwt(token):
     print(token)
-    return json_response(jwt.decode(token, JWT_SECRET, algorithms=["HS256"]))
+    return json_response(output=jwt.decode(token, JWT_SECRET, algorithms=["HS256"]))
+
   
 @app.route('/login', methods=['POST'])
 def login():
@@ -39,9 +40,5 @@ def login():
     else:
         token = create_token(user)
         print(token)
-        reveal = exposejwt(token)
-        print(reveal)
         return "This is token" + token + ". This is exposed token " + reveal #redirect('/static/myprofile.html')
       
-      
-
