@@ -42,3 +42,4 @@ def login():
         print(token)
         return "This is token" + token + ". This is exposed token " + reveal #redirect('/static/myprofile.html')
       
+app.run(host='0.0.0.0', port=80)
