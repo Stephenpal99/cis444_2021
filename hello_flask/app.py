@@ -74,7 +74,8 @@ def login():
         return redirect('/static/myprofile.html')
 
 		
-@app.route('/getMyBooks', methods = ["GET", "POST"])
+app.route('/getMyBooks', methods = ["GET", "POST"])
+global token
 def myBooks(token):
     cur = global_db_con.cursor() 
     getUser = jwt.decode(token, app.config['SECRET_KEY'])
@@ -90,6 +91,6 @@ def myBooks(token):
         for row in rows:
             books.append(row[1])
         return jsonify(str(books))
-      
+
 app.run(host='0.0.0.0', port=80)
 
