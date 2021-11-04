@@ -78,7 +78,7 @@ def login():
 def myBooks():
     cur = global_db_con.cursor() 
     global token
-    getUser = jwt.decode(token, app.config['SECRET_KEY'])
+    getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
     username = getUser['username']
     #username = "stevep"
     sqlExecute = "SELECT * FROM owners WHERE username = username"
