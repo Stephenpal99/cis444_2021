@@ -38,7 +38,11 @@ def login():
         print("The username was not found")
         return "User not found", redirect('first_form.html')
     else:
-        create_token(user)
+        token = create_token(user)
         print(token)
-        print(user)
-        return redirect('/static/myprofile.html')
+        reveal = exposejwt(token)
+        print(reveal)
+        return "This is token" + token + ". This is exposed token " + reveal #redirect('/static/myprofile.html')
+      
+      
+
