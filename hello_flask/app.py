@@ -74,9 +74,8 @@ def login():
         return redirect('/static/myprofile.html')
 
 		
-app.route('/getMyBooks', methods = ["GET", "POST"])
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdGV2ZXAiLCJleHAiOiIyMHNmZ2prIn0.ncLn4XqpJxLbRRm8NLy5FaHeSMjCOuzOkN8sHUiUPOE"
-def myBooks(token):
+@app.route('/getMyBooks', methods = ["GET", "POST"])
+def myBooks():
     cur = global_db_con.cursor() 
     getUser = jwt.decode(token, app.config['SECRET_KEY'])
     username = getUser['username']
