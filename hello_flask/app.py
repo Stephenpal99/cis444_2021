@@ -17,17 +17,17 @@ CUR_ENV = "PRD"
 global_db_con = get_db()
 
 token = None
-def create_token(user):
-    payload = list(user)
+def create_token(user,password):
+    payload = list(user,password)
     jwt_token = jwt.encode({'username': user, 'password': password}, JWT_SECRET, algorithm="HS256")
     return jwt_token
 
 def exposejwt(token):
     print(token)
-    return json_response(output=jwt.decode(token, JWT_SECRET, algorithms=["HS256"]))
+    return json_response(jwt.decode(token, JWT_SECRET, algorithms=["HS256"]))
 
   
-@app.route('/getUser', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
     user = request.form['username']
     password = request.form['password']
@@ -38,8 +38,12 @@ def login():
         print("The username was not found")
         return "User not found", redirect('first_form.html')
     else:
-        token = create_token(user)
+        token = create_token(user,password)
         print(token)
+        reveal = exposejwt(token)
+        print(reveal)
         return "This is token" + token + ". This is exposed token " + reveal #redirect('/static/myprofile.html')
       
 app.run(host='0.0.0.0', port=80)
+
+
