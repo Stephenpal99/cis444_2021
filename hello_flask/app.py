@@ -20,12 +20,11 @@ token = None
 def create_token(user):
     payload = list(user)
     jwt_token = jwt.encode({'username': user, 'password': password}, JWT_SECRET, algorithm="HS256")
-    return (token = jwt_token)
+    return jwt_token
 
 def exposejwt(token):
     print(token)
-    return json_response(output=jwt.decode(token, JWT_SECRET, algorithms=["HS256"]))
-
+    return json_response(jwt.decode(token, JWT_SECRET, algorithms=["HS256"]))
   
 @app.route('/login', methods=['POST'])
 def login():
