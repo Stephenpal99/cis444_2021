@@ -79,9 +79,9 @@ def myBooks():
     cur = global_db_con.cursor() 
     global token
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-    user = getUser['username']
+    username = getUser['username']
     #username = "stevep"
-   sqlExecute = (f"SELECT * FROM owners WHERE username = '{user}';")
+    sqlExecute = "SELECT * FROM owners WHERE username = username"
     cur.execute(sqlExecute)
     rows = cur.fetchall()
     if rows == None:
