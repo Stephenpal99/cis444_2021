@@ -84,7 +84,7 @@ def myBooks():
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
     username = getUser['username']
     #username = "stevep"
-    sqlExecute = (f"SELECT pass FROM users WHERE username = '{username}';")
+    sqlExecute = (f"SELECT pass FROM owners WHERE username = '{username}';")
     cur.execute(sqlExecute)
     rows = cur.fetchall()
     print(username)
