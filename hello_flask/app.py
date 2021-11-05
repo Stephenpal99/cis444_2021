@@ -72,7 +72,7 @@ def login():
         global token
         token = create_token(user)
         return checkr #redirect('/static/myprofile.html')
-    else
+    else:
     	return password
       
       	
