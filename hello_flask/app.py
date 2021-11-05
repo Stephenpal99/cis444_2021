@@ -114,7 +114,7 @@ def buyMocking():
     #username = "stevep"
     sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,%s);"""
     cur.execute(sqlExecute,(username,book_title))
-    return username + " has successfully purchased the book Cat With Hat"
+    return username + " has successfully purchased the book Kill Mockingbird"
       
 
 app.run(host='0.0.0.0', port=80)
