@@ -104,5 +104,18 @@ def buyCatHat():
     cur.execute(sqlExecute,(username,book_title))
     return username + "has successfully purchased the book Cat With Hat"
 
+@app.route('/buyBook_id_123', methods = ["GET", "POST"])
+def buyMocking():
+    cur = global_db_con.cursor() 
+    global token
+    getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+    username = getUser['username']
+    book_title = "Kill Mockingbird"
+    #username = "stevep"
+    sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,%s);"""
+    cur.execute(sqlExecute,(username,book_title))
+    return username + " has successfully purchased the book Cat With Hat"
+      
+
 app.run(host='0.0.0.0', port=80)
 
