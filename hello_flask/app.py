@@ -88,7 +88,8 @@ def myBooks():
     cur.execute(sqlExecute)
     rows = cur.fetchall()
     print(username)
-    print(getUser) 
+    print(getUser)
+    print(rows)
     if rows == None:
         return "You don't own any books"
     else:
