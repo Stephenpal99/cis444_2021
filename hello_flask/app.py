@@ -92,8 +92,8 @@ def myBooks():
     else:
         books = []
         for row in rows:
+	    print(row)
             books.append(row[1])
-	print(rows)
         return username #jsonify(str(books))
 
 app.run(host='0.0.0.0', port=80)
