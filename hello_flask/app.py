@@ -71,9 +71,10 @@ def login():
     elif(checkr == password):
         global token
         token = create_token(user)
-        return checkr #redirect('/static/myprofile.html')
+        return redirect('/static/myprofile.html')
     else:
-    	return password
+    	return print("Invalid password")
+        return "Invalid password", redirect('/static/first_form.html')
       
       	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
