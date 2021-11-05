@@ -73,8 +73,8 @@ def login():
         token = create_token(user)
         return redirect('/static/myprofile.html')
     else:
-        return print("Invalid password")
-        return redirect('/static/first_form.html')
+        return "Invalid password"
+        
       
       	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
