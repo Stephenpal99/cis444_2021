@@ -102,7 +102,9 @@ def buyCatHat():
     #username = "stevep"
     sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,%s);"""
     cur.execute(sqlExecute,(username,book_title))
+    global_db_con.commit()
     return username + "has successfully purchased the book Cat With Hat"
+   
 
 @app.route('/buyBook_id_123', methods = ["GET", "POST"])
 def buyMocking():
@@ -114,6 +116,7 @@ def buyMocking():
     #username = "stevep"
     sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,%s);"""
     cur.execute(sqlExecute,(username,book_title))
+    global_db_con.commit()
     return username + " has successfully purchased the book Kill Mockingbird"
       
 
