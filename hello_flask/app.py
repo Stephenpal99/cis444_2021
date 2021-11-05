@@ -92,5 +92,16 @@ def myBooks():
     else:
         return jsonify(str(rows))
 
+@app.route('/buyBook_id_321', methods = ["GET", "POST"])
+def buyCatHat():
+    cur = global_db_con.cursor() 
+    global token
+    getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+    username = getUser['username']
+    #username = "stevep"
+    sqlExecute = (f"INSERT INTO owners (username, book_title) VALUES  username = '{username}','Cat With Hat';")
+    cur.execute(sqlExecute)
+    return username + "has successfully purchased the book Cat With Hat"
+
 app.run(host='0.0.0.0', port=80)
 
