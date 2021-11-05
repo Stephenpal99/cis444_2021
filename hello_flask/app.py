@@ -73,7 +73,7 @@ def login():
         token = create_token(user)
         return redirect('/static/myprofile.html')
     else:
-    	return print("Invalid password")
+        return print("Invalid password")
         return redirect('/static/first_form.html')
       
       	
