@@ -98,9 +98,10 @@ def buyCatHat():
     global token
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
     username = getUser['username']
+    book_title = "Cat With Hat"
     #username = "stevep"
-    sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,'Cat With Hat');"""
-    cur.execute(sqlExecute,(username))
+    sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,%s);"""
+    cur.execute(sqlExecute,(username,book_title))
     return username + "has successfully purchased the book Cat With Hat"
 
 app.run(host='0.0.0.0', port=80)
