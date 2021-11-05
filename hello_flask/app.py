@@ -68,12 +68,12 @@ def login():
     if checkr == None:
         print("The username was not found")
         return "User not found"
-    else:
+    else if(checkr == password):
         global token
         token = create_token(user)
         return checkr #redirect('/static/myprofile.html')
-
-		
+      
+      	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
 def myBooks():
     cur = global_db_con.cursor() 
