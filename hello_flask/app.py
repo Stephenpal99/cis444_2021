@@ -84,11 +84,11 @@ def myBooks():
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
     username = getUser['username']
     #username = "stevep"
-    sqlExecute = "SELECT * FROM owners WHERE username = username"
+    sqlExecute = (f"SELECT pass FROM users WHERE username = '{username}';")
     cur.execute(sqlExecute)
     rows = cur.fetchall()
     print(username)
-    print(getUser)
+    print(getUser) 
     if rows == None:
         return "You don't own any books"
     else:
