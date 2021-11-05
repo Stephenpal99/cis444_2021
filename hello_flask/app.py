@@ -87,16 +87,10 @@ def myBooks():
     sqlExecute = (f"SELECT book_title FROM owners WHERE username = '{username}';")
     cur.execute(sqlExecute)
     rows = cur.fetchall()
-    print(username)
-    print(getUser)
-    print(rows)
     if rows == None:
         return "You don't own any books"
     else:
-        books = []
-        for row in rows:
-            books.append(row[1])
-        return jsonify(str(books))
+        return rows
 
 app.run(host='0.0.0.0', port=80)
 
