@@ -74,7 +74,7 @@ def login():
         return redirect('/static/myprofile.html')
     else:
     	return print("Invalid password")
-        return "Invalid password", redirect('/static/first_form.html')
+        return redirect('/static/first_form.html')
       
       	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
