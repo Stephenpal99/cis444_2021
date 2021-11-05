@@ -89,12 +89,13 @@ def myBooks():
     rows = cur.fetchall()
     if rows == None:
         return "You don't own any books"
-    else:
+    elif(getUser == username):
         books = []
         for row in rows:
-            print(row)
             books.append(row[1])
-        return username #jsonify(str(books))
+        return jsonify(str(books))
+    else:
+      return "You still don't own any books"
 
 app.run(host='0.0.0.0', port=80)
 
