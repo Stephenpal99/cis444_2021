@@ -90,7 +90,7 @@ def myBooks():
     if rows == None:
         return "You don't own any books"
     else:
-        return rows
+        return jsonify(str(rows))
 
 app.run(host='0.0.0.0', port=80)
 
