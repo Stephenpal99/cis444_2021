@@ -25,7 +25,7 @@ token = None
 
 @app.route('/') #endpoint
 def index():
-    return redirect('/static/index.html')
+    return redirect('/static/first_form.html')
 
 
 @app.route('/backp',  methods=['POST']) #endpoint
@@ -71,6 +71,7 @@ def addUser():
 	return json_response(status_=500 ,data=ERROR_MSG)
 
 @app.route('/getUser', methods=['POST'])
+logger.debug(f"Login")
 def login():
     user = request.form['username']
     password = request.form['password']
@@ -85,10 +86,10 @@ def login():
         token = create_token(user)
         return redirect('/static/myprofile.html')
     else:
-        return "Invalid password"
-        
-      
-      	
+    	logger.error(user)
+        return json_response(status_=500 ,data=ERROR_MSG)
+                
+            	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
 def myBooks():
     cur = global_db_con.cursor() 
