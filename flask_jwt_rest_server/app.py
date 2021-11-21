@@ -56,7 +56,7 @@ def create_token(user):
 
 @app.route('/addUser',methods = ["GET","POST"])
 def addUser():
-	logger.debug(f"Add user")
+	logger.debug(f"Test")
 	if request.method == "POST":
 		cur =global_db_con.cursor()
 		user = request.form.get("username")
