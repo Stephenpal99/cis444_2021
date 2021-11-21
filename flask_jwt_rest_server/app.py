@@ -71,7 +71,6 @@ def addUser():
 	return json_response(status_=500 ,data=ERROR_MSG)
 
 @app.route('/getUser', methods=['POST'])
-logger.debug(f"Login")
 def login():
     user = request.form['username']
     password = request.form['password']
