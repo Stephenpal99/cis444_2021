@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+   
+ <html>
+
+  <head>
+	   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style type="text/css">
+      .form{
+        color: black;
+        font-family: serif;
+        font-size: 24px;
+        padding: 5x;
+        margin: 10px;
+        color: white;
+      }
+      .container{
+        padding: 40px;
+        text-align: center;
+        background-color: orange;
+      }
+      .submit{
+        text-align: center;
+        background-color: black;
+        color: white;
+        margin-top: 20px;
+        font-size: 20px;
+      }
+      #header{
+        text-align: center;
+      }
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <h1 id="header">Welcome to Barn & Noodles</h1>
+    <form action="/getUser" method="POST" class="container">
+      <!-- For the username field-->
+      <label for="username" class="form">Username: </label>
+      <input type="text" name="username" id="username" required="required" placeholder="please enter username" value="">
+      <br>
+      <!--For the password field-->
+      <label for="password" class="form">Password: </label>
+      <input type="password" name="password" id="password" required="required" placeholder="please enter password" value="">
+      <br><br>
+      <label><a href="create.html">Create an account!</a></label><br>
+      <!--Submission of the form-->
+      <input type="submit" value="Submit" class="submit">
+        
+
+    </form>
+  </body>
+</html>
