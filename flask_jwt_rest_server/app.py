@@ -84,9 +84,8 @@ def login():
         global token
         token = create_token(user)
         return redirect('/static/myprofile.html')
-    else:
-    	logger.error(user)
-        return json_response(status_=500 ,data=ERROR_MSG)
+    else: 
+	return json_response(status_=500 ,data=ERROR_MSG)
                 
             	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
