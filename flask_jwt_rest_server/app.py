@@ -33,9 +33,9 @@ def app(environ, start_response):
     start_response(status, response_headers)
     return redirect ('static/first_form.html')
 
-#@app.route('/') #endpoint
-#def index():
-    #return redirect('/static/first_form.html')
+@app.route('/') #endpoint
+def index():
+    return redirect('/static/first_form.html')
 
 
 @app.route('/backp',  methods=['POST']) #endpoint
@@ -140,6 +140,7 @@ def buyMocking():
     cur.execute(sqlExecute,(username,book_title))
     global_db_con.commit()
     return username + " has successfully purchased the book Kill Mockingbird"
-      
-
-app.run(host='0.0.0.0', port=80)
+     
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)    
+    
