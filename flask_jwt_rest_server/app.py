@@ -13,8 +13,8 @@ from tools.logging import logger
 
 ERROR_MSG = "Ooops.. Didn't work!"
 
-#app = Flask(__name__)
-#FlaskJSON(app)
+app = Flask(__name__)
+FlaskJSON(app)
 
 JWT_SECRET = None
 CUR_ENV = "PRD"
@@ -142,4 +142,4 @@ def buyMocking():
     return username + " has successfully purchased the book Kill Mockingbird"
       
 
-#app.run(host='0.0.0.0', port=80)
+app.run(host='0.0.0.0', port=80)
