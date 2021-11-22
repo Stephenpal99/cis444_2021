@@ -33,7 +33,7 @@ def app(environ, start_response):
     start_response(status, response_headers)
     return redirect ('static/first_form.html')
 
-@app.route('/') #endpoint
+#@app.route('/') #endpoint
 def index():
     return redirect('/static/first_form.html')
 
