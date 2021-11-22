@@ -23,7 +23,7 @@ global_db_con = get_db()
 
 token = None
 
-def app(environ, start_response):
+"""def app(environ, start_response):
     data = b'Welcome to Barn & Noodle 2.0\n'
     status = '200 OK'
     response_headers = [
@@ -31,7 +31,7 @@ def app(environ, start_response):
         ('Content-Length', str(len(data)))
     ]
     start_response(status, response_headers)
-    return redirect ('static/first_form.html')
+    return redirect ('static/first_form.html')"""
 
 @app.route('/') #endpoint
 def index():
