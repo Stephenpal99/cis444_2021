@@ -72,7 +72,7 @@ def addUser():
 
 @app.route('/getUser', methods=['POST'])
 def login():
-    logger.debug(f"The user requested has the wrong password.")
+    logger.debug(f"The user is logging in with credentials.")
     user = request.form['username']
     password = request.form['password']
     cur = global_db_con.cursor()
@@ -86,8 +86,8 @@ def login():
         token = create_token(user)
         return redirect('/static/myprofile.html')
     else:
-        #logger.error(user)
-        return json_response(status_=500 ,data=ERROR_MSG)
+        logger.error(user)
+        return redirect('/static/first_form.html')
             	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
 def myBooks():
