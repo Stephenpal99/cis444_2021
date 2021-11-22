@@ -13,8 +13,8 @@ from tools.logging import logger
 
 ERROR_MSG = "Ooops.. Didn't work!"
 
-app = Flask(__name__)
-FlaskJSON(app)
+#app = Flask(__name__)
+#FlaskJSON(app)
 
 JWT_SECRET = None
 CUR_ENV = "PRD"
@@ -22,6 +22,16 @@ CUR_ENV = "PRD"
 global_db_con = get_db()
 
 token = None
+
+def app(environ, start_response):
+    data = b'Welcome to Barn & Noodle 2.0\n'
+    status = '200 OK'
+    response_headers = [
+        ('Content-type', 'text/plain'),
+        ('Content-Length', str(len(data)))
+    ]
+    start_response(status, response_headers)
+    return redirect ('static/first_form.html')
 
 @app.route('/') #endpoint
 def index():
@@ -132,4 +142,4 @@ def buyMocking():
     return username + " has successfully purchased the book Kill Mockingbird"
       
 
-app.run(host='0.0.0.0', port=80)
+#app.run(host='0.0.0.0', port=80)
