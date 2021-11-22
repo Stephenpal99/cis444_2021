@@ -34,8 +34,8 @@ def app(environ, start_response):
     return redirect ('static/first_form.html')
 
 #@app.route('/') #endpoint
-def index():
-    return redirect('/static/first_form.html')
+#def index():
+    #return redirect('/static/first_form.html')
 
 
 @app.route('/backp',  methods=['POST']) #endpoint
