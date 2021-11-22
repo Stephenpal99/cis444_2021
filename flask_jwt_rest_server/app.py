@@ -85,7 +85,7 @@ def login():
         token = create_token(user)
         return redirect('/static/myprofile.html')
     else: 
-                
+        return NULL
             	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
 def myBooks():
