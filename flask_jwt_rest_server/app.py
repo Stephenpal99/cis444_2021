@@ -4,7 +4,7 @@ import jwt
 
 import datetime
 import bcrypt
-
+from flask_jwt_rest_server import app
 
 from db_con import get_db_instance, get_db
 
@@ -142,5 +142,5 @@ def buyMocking():
     return username + " has successfully purchased the book Kill Mockingbird"
      
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)    
+    app.run("""host='0.0.0.0', port=80""")    
     
