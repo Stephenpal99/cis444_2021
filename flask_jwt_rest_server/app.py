@@ -86,7 +86,7 @@ def login():
         token = create_token(user)
         return redirect('/static/myprofile.html')
     else:
-        logger.error(user)
+        logger.error(user + "Has passed wrong password" + password)
         return redirect('/static/first_form.html')
             	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
