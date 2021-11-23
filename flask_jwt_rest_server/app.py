@@ -89,6 +89,8 @@ def addUser():
 @app.route('/getUser', methods=['POST'])
 def login():
     logger.debug(f"The user is logging in with credentials!")
+     #setup the env
+    init_new_env()
     user = request.form['username']
     password = request.form['password']
     cur = global_db_con.cursor()
