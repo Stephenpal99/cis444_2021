@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request, jsonify, redirect
+from flask import Flask,render_template,request, jsonify, redirect, g
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 import jwt
 
@@ -20,8 +20,13 @@ FlaskJSON(app)
 JWT_SECRET = None
 CUR_ENV = "PRD"
 
-global_db_con = get_db()
+#global_db_con = get_db()
+#g is flask for a global var storage 
+def init_new_env():
+    if 'db' not in g:
+        g.db = get_db()
 
+    g.secrets = get_secrets()
 token = None
 
 """def app(environ, start_response):
