@@ -93,7 +93,7 @@ def login():
     init_new_env()
     user = request.form['username']
     password = request.form['password']
-    cur = global_db_con.cursor()
+    cur = g.cursor()
     cur.execute(f"SELECT pass FROM users WHERE username = '{user}';")
     checkr = cur.fetchone()[0]
     if checkr == None:
