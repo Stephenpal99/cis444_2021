@@ -86,9 +86,9 @@ def addUser():
 		print("Your user account has successfully been created. Please login now.")
                 #logger.info("The account has successfully been created")
 		return "Welcome " + user
-	else:
-                logger.error(user + " not successfully created.")
-	        return json_response(status_=500 ,data=INV)
+	#else:
+                #logger.error(user + " not successfully created.")
+	        #return json_response(status_=500 ,data=INV)
 
 @app.route('/getUser', methods=['POST'])
 def login():
