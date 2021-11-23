@@ -4,7 +4,6 @@ import jwt
 
 import datetime
 import bcrypt
-#from flask_jwt_rest_server import app
 
 from db_con import get_db_instance, get_db
 
@@ -13,20 +12,21 @@ from tools.get_aws_secrets import get_secrets
 from tools.logging import logger
 
 ERROR_MSG = "Ooops.. Didn't work!"
-
+INV = "Unable to process"
 app = Flask(__name__)
 FlaskJSON(app)
 
 JWT_SECRET = None
 CUR_ENV = "PRD"
 
-#global_db_con = get_db()
+global_db_con = get_db()
 #g is flask for a global var storage 
-def init_new_env():
+"""def init_new_env():
     if 'db' not in g:
         g.db = get_db()
 
     g.secrets = get_secrets()
+"""
 token = None
 
 """def app(environ, start_response):
@@ -57,6 +57,7 @@ def backp():
 
 @app.route('/exposejwt') #endpoint
 def exposejwt():
+    logger.debug(f"Exposure of jwt")
     jwt_token = request.args.get('jwt')
     print(jwt_token)
     return json_response(output=jwt.decode(jwt_token, JWT_SECRET, algorithms=["HS256"]))
@@ -66,13 +67,14 @@ def exposejwt():
 app.config['SECRET_KEY'] = 'helloworld'
 
 def create_token(user):
+    logger.debug("Creation of the jwt token")
     payload = list(user)
     token = jwt.encode({'username': user, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
     return token
 
 @app.route('/addUser',methods = ["GET","POST"])
 def addUser():
-	logger.debug(f"Test1")
+	logger.debug(f"The user is creating an account.")
 	if request.method == "POST":
 		cur =global_db_con.cursor()
 		user = request.form.get("username")
@@ -82,13 +84,14 @@ def addUser():
 		cur.execute(userInsert,(user,enc_password))
 		global_db_con.commit()
 		print("Your user account has successfully been created. Please login now.")
-		return "Welcome" + user
-	logger.error(user)
-	return json_response(status_=500 ,data=ERROR_MSG)
+        logger.info("The account has successfully been created")
+		return "Welcome " + user
+    logger.error(user + " not successfully created.")
+	return json_response(status_=500 ,data=INV)
 
 @app.route('/getUser', methods=['POST'])
 def login():
-    logger.debug(f"The user is logging in with credentials!")
+    logger.debug(f"The user is logging in with credentials!:")
      #setup the env
     init_new_env()
     user = request.form['username']
@@ -97,9 +100,11 @@ def login():
     cur.execute(f"SELECT pass FROM users WHERE username = '{user}';")
     checkr = cur.fetchone()[0]
     if checkr == None:
+        logger.warning("Username not found")
         print("The username was not found")
         return "User not found"
     elif(checkr == password):
+        logger.info("User has successfully logged in")
         global token
         token = create_token(user)
         return redirect('/static/myprofile.html')
@@ -109,6 +114,7 @@ def login():
             	
 @app.route('/getMyBooks', methods = ["GET", "POST"])
 def myBooks():
+    logger.debug(f"User look up of books owned:")
     cur = global_db_con.cursor() 
     global token
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
@@ -118,12 +124,15 @@ def myBooks():
     cur.execute(sqlExecute)
     rows = cur.fetchall()
     if rows == None:
+        logger.info(username + " request access to books")
         return "You don't own any books"
     else:
+        logger.info(username + " request access to books")
         return jsonify(str(rows))
 
 @app.route('/buyBook_id_321', methods = ["GET", "POST"])
 def buyCatHat():
+    logger.debug(f"Purchase of book:")
     cur = global_db_con.cursor() 
     global token
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
@@ -133,11 +142,13 @@ def buyCatHat():
     sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,%s);"""
     cur.execute(sqlExecute,(username,book_title))
     global_db_con.commit()
+    logger.info(book_title + " has been purchased by user " + username)
     return username + "has successfully purchased the book Cat With Hat"
    
 
 @app.route('/buyBook_id_123', methods = ["GET", "POST"])
 def buyMocking():
+    logger.debug(f"Purchase of book:")
     cur = global_db_con.cursor() 
     global token
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
@@ -147,8 +158,8 @@ def buyMocking():
     sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,%s);"""
     cur.execute(sqlExecute,(username,book_title))
     global_db_con.commit()
+    logger.info(book_title + " has been purchased by user " + username)
     return username + " has successfully purchased the book Kill Mockingbird"
      
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)    
-    
