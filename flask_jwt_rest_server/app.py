@@ -141,6 +141,6 @@ def buyMocking():
     global_db_con.commit()
     return username + " has successfully purchased the book Kill Mockingbird"
      
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)    
+#if __name__ == "__main__":
+    #app.run(host='0.0.0.0', port=80)    
     
