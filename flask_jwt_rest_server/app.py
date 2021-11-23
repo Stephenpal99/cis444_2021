@@ -84,7 +84,7 @@ def addUser():
 		cur.execute(userInsert,(user,enc_password))
 		global_db_con.commit()
 		print("Your user account has successfully been created. Please login now.")
-                logger.info("The account has successfully been created")
+                #logger.info("The account has successfully been created")
 		return "Welcome " + user
 	else:
                 logger.error(user + " not successfully created.")
