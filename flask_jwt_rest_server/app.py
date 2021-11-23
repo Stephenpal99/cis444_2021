@@ -94,10 +94,10 @@ def addUser():
 def login():
     logger.debug(f"The user is logging in with credentials!:")
      #setup the env
-    init_new_env()
+    #init_new_env()
     user = request.form['username']
     password = request.form['password']
-    cur = g.cursor()
+    cur = global_db_con.cursor()
     cur.execute(f"SELECT pass FROM users WHERE username = '{user}';")
     checkr = cur.fetchone()[0]
     if checkr == None:
