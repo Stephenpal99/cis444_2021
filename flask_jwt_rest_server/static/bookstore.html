@@ -1,52 +1,73 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<style type="text/css">
-    
-    	.main{
-        	color: white;
-        }
-      
-		.bookstore_list{
-			text-align: center;
-			list-style: none;
-			padding: 20px;
-          	color: black;
-
+		.title{
+			font-family: Corinthia;
 		}
-		.item{
-			padding: 40px;
-			margin: 20px;
-			background-color: orange;
-			border-color: black;
+		.book_title{
+			font-family: Corinthia;
 		}
-
-
+		nav{
+			font-family: Oswald;
+		}
 	</style>
-	<title>Barn & Noodles</title>
+	<title>Barn & Noodles- Bookstore</title>
 </head>
 <body class="main">
-	<h1>Barn & Noodles</h1>
-	<ul class="bookstore_list">
+
+<div class="title">Barn & Noodles- Homepage</div>
+
+	<nav>
+		<a href="index.html">Home</a> |
+  		<a href="first_form.html">Profile</a> |
+  		<a href="bookstore.html">Bookstore</a> |
+  		<a href="about.html">About Us</a>
+	</nav>
+
+   
+   <div class="item">
+   <div class="column-center"><div class="book_title">To Kill A Mockingbird</div><br>To Kill a Mockingbird, novel by American author Harper Lee, published in 1960. Enormously popular, it was translated into some 40 languages, sold more than 40 million copies worldwide, and is one of the most-assigned novels in American schools. In 1961 it won a Pulitzer Prize. The novel was praised for its sensitive treatment of a child’s awakening to racism and prejudice in the American South.
+   <form action="/buyBook_id_123" method="POST">
+		<button class="purchase">Purchase Book</button>
+		</form>
+	</div>
+   <div class="column-left"><img style="width:60%" src="images/mocking.jpg"></div>
+   <div class="column-right"></div>
+   </div>
 
 		<!--Kill Mockingbird -->
-		<li class="item"><img src="img/book.jpg"><br>Kill Mockingbird<br>
-		<form action="/buyBook_id_123" method="POST">
-			<button >Purchase Book</button>
-		</form>
-		</li>
 
-		<!--Cat With Hat -->
-		<li class="item" method="POST"><img src="img/book.jpg"><br>Cat With Hat<br>
-		<form action="/buyBook_id_321">
-			<button >Purchase Book</button>
+
+
+
+		
+		<div class="item">
+   <div class="column-center"><div class="book_title">The Cat In The Hat</div><br>To Kill a Mockingbird, novel by American author Harper Lee, published in 1960. Enormously popular, it was translated into some 40 languages, sold more than 40 million copies worldwide, and is one of the most-assigned novels in American schools. In 1961 it won a Pulitzer Prize. The novel was praised for its sensitive treatment of a child’s awakening to racism and prejudice in the American South.
+   <form action="/buyBook_id_123" method="POST">
+		<button class="purchase">Purchase Book</button>
 		</form>
-		</li>
+	</div>
+   <div class="column-left"><img style="width:60%" src="images/chat.jpg"></div>
+   <div class="column-right"></div>
+	</div>
+		<!--Cat With Hat -->
 		
 
-	</ul> 
 	
 </body>
 </html>

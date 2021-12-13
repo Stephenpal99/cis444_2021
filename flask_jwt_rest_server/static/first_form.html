@@ -2,8 +2,28 @@
    
  <html>
 
+
+
   <head>
 	   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css">
+  <style type="text/css">
+    .title{
+      font-family: Corinthia;
+    }
+    .book_title{
+      font-family: Corinthia;
+    }
+    nav{
+      font-family: Oswald;
+    }
+  </style>
     <style type="text/css">
       .form{
         color: black;
@@ -16,7 +36,7 @@
       .container{
         padding: 40px;
         text-align: center;
-        background-color: orange;
+        background-color: white;
       }
       .submit{
         text-align: center;
@@ -28,6 +48,28 @@
       #header{
         text-align: center;
       }
+      input{
+        background-color: white;
+        border-radius: 15px;
+        padding: 10px;
+        margin-top: 10px;
+      }
+      input:hover{
+        transition-duration: 4s;
+        width: 50%;
+        color: orange;
+      }
+
+      .smooth{
+        background-color: black;
+        width: 25%;
+        color: white;
+        font-family: Oswald;
+      }
+      .smooth:hover{
+        width: 30%;
+        transition-duration: 1s;
+      }
 
 
 
@@ -35,19 +77,27 @@
   </head>
 
   <body>
-    <h1 id="header">Welcome to Barn & Noodles</h1>
+    <h1 class="title" style="">Welcome to Barn & Noodles</h1>
+
+    <nav>
+    <a href="index.html">Home</a> |
+      <a href="first_form.html">Profile</a> |
+      <a href="bookstore.html">Bookstore</a> |
+      <a href="about.html">About Us</a>
+  </nav>
+  
     <form action="/getUser" method="POST" class="container">
       <!-- For the username field-->
-      <label for="username" class="form">Username: </label>
+      <label for="username" class="form" style="font-family:Oswald; color: black;">Username: </label>
       <input type="text" name="username" id="username" required="required" placeholder="please enter username" value="">
       <br>
       <!--For the password field-->
-      <label for="password" class="form">Password: </label>
+      <label for="password" class="form" style="font-family:Oswald; color:black;">Password: </label>
       <input type="password" name="password" id="password" required="required" placeholder="please enter password" value="">
       <br><br>
-      <label><a href="create.html">Create an account!</a></label><br>
+      <label style="font-family:Oswald;"><a href="create.html">Create an account!</a></label><br>
       <!--Submission of the form-->
-      <input type="submit" value="Submit" class="submit">
+      <input class="smooth" type="submit" value="Submit" class="submit">
         
 
     </form>
