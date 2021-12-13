@@ -110,7 +110,7 @@ def login():
         logger.info("User has successfully logged in")
         global token
         token = create_token(user)
-        return redirect('/static/myprofile.html')
+        return redirect('/static/profile.html')
     else:
         logger.error(user + " has passed wrong password " + password)
         return redirect('/static/first_form.html')
