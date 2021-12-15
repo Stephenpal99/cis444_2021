@@ -139,7 +139,8 @@ def myBooks():
         return "You don't own any books"
     else:
         logger.info(username + " request access to books")
-        return jsonify(str(rows))
+	return render_template('mybooks.html',jsonfile=json.dumps(data))
+
 
 @app.route('/buyBook_id_321', methods = ["GET", "POST"])
 def buyCatHat():
