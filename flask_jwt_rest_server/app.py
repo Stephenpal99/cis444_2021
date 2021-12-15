@@ -15,11 +15,11 @@ from tools.logging import logger
 
 ERROR_MSG = "Ooops.. Didn't work!"
 INV = "Unable to process"
-"""app = Flask(__name__)
-FlaskJSON(app)"""
-def create_app():
+app = Flask(__name__)
+FlaskJSON(app)
+"""def create_app():
     app = Flask(__name__)
-    return app
+    return app"""
 
 JWT_SECRET = None
 CUR_ENV = "PRD"
