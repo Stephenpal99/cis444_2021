@@ -1,15 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+  <style type="text/css">
+    .title{
+      font-family: Corinthia;
+    }
+    .book_title{
+      font-family: Corinthia;
+    }
+    nav{
+      font-family: Oswald;
+    }
+
+    .mybooks{
+      font-family: Corinthia;
+      font-size: 12px;
+      color: black;
+    }
+  </style>
+
   <script>
     var jsonfile = {{jsonfile}}
   </script>
-  <head> 
-    <title> My Books
-      </title>
+
+      <head> 
+    <title> 
+    My Books
+    </title>
   </head>
+
+  <h1 class="title" style="font-family: Corinthia">Barn & Noodles- My Books</h1>
+
+  <nav>
+    <a href="{{ url_for('static',filename='index.html') }}">Home</a> |
+      <a href="{{ url_for('template',filename='profile.html') }}">Profile</a> |
+      <a href="{{ url_for('static',filename='bookstore.html') }}">Bookstore</a> |
+      <a href="{{ url_for('static',filename='about.html') }}">About Us</a>
+  </nav>
+  <br>
+  <div>
+    <div style="text-align: center; font-family:Oswald">You have the following books</div>
+  </div>
+  <div class="mybooks"> You currently own {{jsonfile}}</div>
+
+<body>
+  <footer>Property of Stephen LLC.</footer>
   
-  <body>
-  You currently own {{jsonfile}}
-  
-  </body>
+</body>
 </html>
