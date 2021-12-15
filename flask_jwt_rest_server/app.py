@@ -142,6 +142,20 @@ def myBooks():
         data = rows
         return render_template('mybooks.html',jsonfile=json.dumps(data))
 
+@app.route('/buyBook_id_124', methods = ["GET", "POST"])
+def buyCatHat():
+    logger.debug(f"Purchase of book:")
+    cur = global_db_con.cursor() 
+    global token
+    getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+    username = getUser['username']
+    book_title = "Rich Dad Poor Dad"
+    #username = "stevep"
+    sqlExecute = """INSERT INTO owners(username,book_title) VALUES(%s,%s);"""
+    cur.execute(sqlExecute,(username,book_title))
+    global_db_con.commit()
+    logger.info(book_title + " has been purchased by user " + username)
+    return username + "has successfully purchased the book Rich Dad Poor Dad"-
 
 @app.route('/buyBook_id_321', methods = ["GET", "POST"])
 def buyCatHat():
