@@ -1,0 +1,98 @@
+
+    	body {
+            animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .column-left{ 
+        	float: left; 
+        	width: 45%;
+        	height: 400px; 
+        }
+
+		.column-right{ float: right;
+		 width: 5%;
+		 height: 400px; 
+		  }
+		.column-center{ display: inline-block;
+		 width: 45%;
+		 height: 400px; 
+		  }
+      
+		.bookstore_list{
+			text-align: center;
+			list-style: none;
+			padding: 20px;
+          	color: black;
+
+		}
+		.item{
+			padding: 40px;
+			margin: 20px;
+			background-color: white;
+			border-color: black;
+		}
+		.book_cover{
+			width: 80%;
+		}
+		#logo{
+			width: 100px;
+			height: 50%;
+		}
+		nav{
+			text-align: center;
+			color: orange;
+			border-color: orange;
+		}
+
+		.book_title{
+			width: 100%;
+			font-size: 30px;
+		}
+		.purchase{
+			margin-top: 30px;
+			width: 100%;
+			padding: 10px;
+			background-color: black;
+			border-color: black;
+			border-width: 0px;
+			border-radius: 20px;
+			color: white;
+			font-family: Helvetica;
+		}
+		.purchase:hover{
+			color: black;
+			transition-duration: 1s;
+			background-color: orange;
+
+		}
+		.title{
+			background-color: #5fc6e3;
+			color: whitesmoke;
+			padding: 20px;
+			font-size: 50px;
+			text-align: center;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+		a {
+			text-decoration: none;
+			font-size: 25px;
+			color: orange;
+
+		}
+
+
+		a:hover{
+			transition-duration: 1s;
+			color: #5fc6e3;
+		}
