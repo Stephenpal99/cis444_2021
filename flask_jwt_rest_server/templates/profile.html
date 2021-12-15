@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.title{
+			font-family: Corinthia;
+		}
+		.book_title{
+			font-family: Corinthia;
+		}
+		nav{
+			font-family: Oswald;
+		}
+	</style>
+<script type="text/javascript">
+	var jsonfile = {{jsonfile}}
+
+</script>
+      <head> 
+		<title> 
+		Profile
+		</title>
+	</head>
+
+	<h1 class="title" style="font-family: Corinthia">Barn & Noodles- Homepage</h1>
+
+	<nav>
+		<a href="index.html">Home</a> |
+  		<a href="first_form.html">Profile</a> |
+  		<a href="bookstore.html">Bookstore</a> |
+  		<a href="about.html">About Us</a>
+	</nav>
+
+	<div>
+		<h3 style="text-align: center;">Welcome {{jsonfile}}h3>
+
+		<div class="item">
+
+   <div class="column-center"><div class="book_title">Welcome #####</div><br>
+   		<form action="/getMyBooks" method="POST">
+			<button class="purchase">Your Books</button>
+		</form>
+		<button href="mailto:help@barnesandnoodles.com" class="purchase">Email Inquiry</button>
+
+	</div>
+
+   <div class="column-left"><img style="width:60%" src="images/user.jpeg">
+   	<form style="text-align: center;">
+   		<input type="file" id="myFile"></input><br><br>
+   		<input type="submit" name="">
+   	</form></div>
+   <div class="column-right"></div>
+   </div>
+
+	</div>
+	<div>
+	</div>
+
+<body>
+	<footer>Property of Stephen LLC.</footer>
