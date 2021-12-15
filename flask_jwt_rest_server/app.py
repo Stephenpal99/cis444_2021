@@ -6,6 +6,8 @@ import jwt
 import json
 import datetime
 import bcrypt
+import html
+import os
 
 from db_con import get_db_instance, get_db
 
@@ -114,7 +116,7 @@ def login():
         logger.info("User has successfully logged in")
         global token
         token = create_token(user)
-        return redirect('/static/profile.html',jsonfile=json.dumps(data))
+        return render_template('/static/profile.html',jsonfile=json.dumps(data))
     else:
         logger.error(user + " has passed wrong password " + password)
         return redirect('/static/first_form.html')
