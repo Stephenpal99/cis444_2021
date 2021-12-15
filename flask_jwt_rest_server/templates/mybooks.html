@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&display=swap" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
   <style type="text/css">
     .title{
       font-family: Corinthia;
@@ -18,9 +18,10 @@
     }
 
     .mybooks{
-      font-family: Corinthia;
+      font-family: Oswald;
       font-size: 12px;
       color: black;
+      text-align: center;
     }
   </style>
 
