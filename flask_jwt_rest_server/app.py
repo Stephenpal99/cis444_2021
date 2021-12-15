@@ -33,7 +33,6 @@ global_db_con = get_db()
 """def init_new_env():
     if 'db' not in g:
         g.db = get_db()
-
     g.secrets = get_secrets()
 """
 token = None
@@ -83,21 +82,21 @@ def create_token(user):
 
 @app.route('/addUser',methods = ["GET","POST"])
 def addUser():
-	logger.debug(f"The user is creating an account.")
-	if request.method == "POST":
-		cur =global_db_con.cursor()
-		user = request.form.get("username")
-		password = request.form.get("password")
-		enc_password = bcrypt.hashpw(bytes(password,"utf-8"),bcrypt.gensalt())
-		userInsert = """INSERT INTO users(username,pass) values(%s, %s);"""
-		cur.execute(userInsert,(user,enc_password))
-		global_db_con.commit()
-		print("Your user account has successfully been created. Please login now.")
+    logger.debug(f"The user is creating an account.")
+    if request.method == "POST":
+        cur =global_db_con.cursor()
+        user = request.form.get("username")
+        password = request.form.get("password")
+        enc_password = bcrypt.hashpw(bytes(password,"utf-8"),bcrypt.gensalt())
+        userInsert = """INSERT INTO users(username,pass) values(%s, %s);"""
+        cur.execute(userInsert,(user,enc_password))
+        global_db_con.commit()
+        print("Your user account has successfully been created. Please login now.")
                 #logger.info("The account has successfully been created")
-		return "Welcome " + user
-	#else:
+        return "Welcome " + user
+    #else:
                 #logger.error(user + " not successfully created.")
-	        #return json_response(status_=500 ,data=INV)
+            #return json_response(status_=500 ,data=INV)
 
 @app.route('/getUser', methods=['POST'])
 def login():
@@ -122,7 +121,7 @@ def login():
     else:
         logger.error(user + " has passed wrong password " + password)
         return redirect('/static/first_form.html')
-            	
+                
 @app.route('/getMyBooks', methods = ["GET", "POST"])
 def myBooks():
     logger.debug(f"User look up of books owned:")
@@ -131,7 +130,7 @@ def myBooks():
     getUser = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
     username = getUser['username']
     #username = "stevep"
-    sqlExecute = (f"SELECT book_title FROM owners WHERE username = '{username}';")
+    sqlExecute = (f"SELECT DISTINCT book_title FROM owners WHERE username = '{username}';")
     cur.execute(sqlExecute)
     rows = cur.fetchall()
     if rows == None:
@@ -155,7 +154,7 @@ def buyRich():
     cur.execute(sqlExecute,(username,book_title))
     global_db_con.commit()
     logger.info(book_title + " has been purchased by user " + username)
-    return username + "has successfully purchased the book Rich Dad Poor Dad"
+    return username + " has successfully purchased the book Rich Dad Poor Dad"
 
 @app.route('/buyBook_id_321', methods = ["GET", "POST"])
 def buyCatHat():
@@ -170,7 +169,7 @@ def buyCatHat():
     cur.execute(sqlExecute,(username,book_title))
     global_db_con.commit()
     logger.info(book_title + " has been purchased by user " + username)
-    return username + "has successfully purchased the book Cat With Hat"
+    return username + " has successfully purchased the book Cat With Hat"
    
 
 @app.route('/buyBook_id_123', methods = ["GET", "POST"])
@@ -186,8 +185,7 @@ def buyMocking():
     cur.execute(sqlExecute,(username,book_title))
     global_db_con.commit()
     logger.info(book_title + " has been purchased by user " + username)
-    return username + " has successfully purchased the book Kill Mockingbird"
+    return username + " has successfully purchased the book To Kill Mockingbird"
      
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80, ssl_context='adhoc')
-
+    app.run(host='0.0.0.0', port=8000, ssl_context='adhoc')  
