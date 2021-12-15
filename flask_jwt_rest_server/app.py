@@ -155,7 +155,7 @@ def buyCatHat():
     cur.execute(sqlExecute,(username,book_title))
     global_db_con.commit()
     logger.info(book_title + " has been purchased by user " + username)
-    return username + "has successfully purchased the book Rich Dad Poor Dad"-
+    return username + "has successfully purchased the book Rich Dad Poor Dad"
 
 @app.route('/buyBook_id_321', methods = ["GET", "POST"])
 def buyCatHat():
