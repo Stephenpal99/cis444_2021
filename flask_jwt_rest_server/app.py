@@ -101,6 +101,7 @@ def login():
      #setup the env
     #init_new_env()
     user = request.form['username']
+    data = user
     password = request.form['password']
     cur = global_db_con.cursor()
     cur.execute(f"SELECT pass FROM users WHERE username = '{user}';")
@@ -113,7 +114,7 @@ def login():
         logger.info("User has successfully logged in")
         global token
         token = create_token(user)
-        return redirect('/static/profile.html')
+        return redirect('/static/profile.html', jsonfile=jsonfile=json.dumps(data))
     else:
         logger.error(user + " has passed wrong password " + password)
         return redirect('/static/first_form.html')
