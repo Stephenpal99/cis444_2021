@@ -143,7 +143,7 @@ def myBooks():
         return render_template('mybooks.html',jsonfile=json.dumps(data))
 
 @app.route('/buyBook_id_124', methods = ["GET", "POST"])
-def buyCatHat():
+def buyRich():
     logger.debug(f"Purchase of book:")
     cur = global_db_con.cursor() 
     global token
