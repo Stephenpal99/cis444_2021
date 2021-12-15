@@ -17,7 +17,7 @@ ERROR_MSG = "Ooops.. Didn't work!"
 INV = "Unable to process"
 """app = Flask(__name__)
 FlaskJSON(app)"""
-def create_app()
+def create_app():
     app = Flask(__name__)
     return app
 
