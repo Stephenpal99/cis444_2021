@@ -139,7 +139,7 @@ def myBooks():
         return "You don't own any books"
     else:
         logger.info(username + " request access to books")
-	data = rows
+        data = rows
 	return render_template('mybooks.html',jsonfile=json.dumps(data))
 
 
