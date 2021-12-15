@@ -15,8 +15,8 @@ from tools.token_required import token_required
 from tools.get_aws_secrets import get_secrets
 from tools.logging import logger
 
-TEMPLATE_DIR = os.path.abspath('../templates')
-STATIC_DIR = os.path.abspath('../static')
+TEMPLATE_DIR = os.path.abspath('templates')
+STATIC_DIR = os.path.abspath('static')
 ERROR_MSG = "Ooops.. Didn't work!"
 INV = "Unable to process"
 # app = Flask(__name__) # to make the app run without any
