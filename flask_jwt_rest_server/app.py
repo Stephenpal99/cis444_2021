@@ -15,10 +15,12 @@ from tools.token_required import token_required
 from tools.get_aws_secrets import get_secrets
 from tools.logging import logger
 
+TEMPLATE_DIR = os.path.abspath('../templates')
+STATIC_DIR = os.path.abspath('../static')
 ERROR_MSG = "Ooops.. Didn't work!"
 INV = "Unable to process"
-app = Flask(__name__)
-FlaskJSON(app)
+# app = Flask(__name__) # to make the app run without any
+app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
 """def create_app():
     app = Flask(__name__)
     return app"""
