@@ -1,6 +1,6 @@
 #Gunicorn server running on port 8000. Has permissions to AWS port
 # CMD line to run server gunicorn --workers=1 --bind 0.0.0.0 app:app
-from flask import Flask,render_template,request, jsonify, redirect, g
+from flask import Flask,json,render_template,request, jsonify, redirect, g
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 import jwt
 import json
